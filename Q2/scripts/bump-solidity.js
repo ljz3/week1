@@ -7,6 +7,11 @@ let content = fs.readFileSync("./contracts/HelloWorldVerifier.sol", { encoding: 
 let bumped = content.replace(solidityRegex, 'pragma solidity ^0.8.0');
 bumped = bumped.replace(verifierRegex, 'contract HelloWorldVerifier');
 
+let contentMultiplier3Verifier = fs.readFileSync("./contracts/Multiplier3Verifier.sol", { encoding: 'utf-8' });
+let bumpedMultiplier3Verifier = contentMultiplier3Verifier.replace(solidityRegex, 'pragma solidity ^0.8.0');
+bumped = bumped.replace(verifierRegex, 'contract Multiplier3Verifier');
+
 fs.writeFileSync("./contracts/HelloWorldVerifier.sol", bumped);
+fs.writeFileSync("./contracts/Multiplier3Verifier.sol", bumpedMultiplier3Verifier);
 
 // [assignment] add your own scripts below to modify the other verifier contracts you will build during the assignment
