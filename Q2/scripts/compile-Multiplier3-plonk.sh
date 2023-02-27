@@ -20,9 +20,12 @@ circom Multiplier3.circom --r1cs --wasm --sym -o Multiplier3_plonk
 snarkjs r1cs info Multiplier3_plonk/Multiplier3.r1cs
 
 # Start a new zkey
-snarkjs plonk setup Multiplier3_plonk/Multiplier3.r1cs powersOfTau28_hez_final_10.ptau Multiplier3_plonk/circuit_0000.zkey
+snarkjs plonk setup Multiplier3_plonk/Multiplier3.r1cs powersOfTau28_hez_final_10.ptau Multiplier3_plonk/circuit_final.zkey
 
 # Export the verification key
-snarkjs zkey export verificationkey Multiplier3_plonk/circuit_0000.zkey vMultiplier3_plonk/verification_key.json
+snarkjs zkey export verificationkey Multiplier3_plonk/circuit_final.zkey Multiplier3_plonk/verification_key.json
+
+# generate solidity contract
+snarkjs zkey export solidityverifier Multiplier3_plonk/circuit_final.zkey ../Multiplier3PlonkVerifier.sol
 
 cd ../..
